@@ -15,7 +15,7 @@ export default function Illustration() {
       description='Thoughts programming, tech, and my personal life.'
     >
       <Section>
-        <H2>Blog</H2>
+        <H2>Blog </H2>
       </Section>
     </Container>
   );
