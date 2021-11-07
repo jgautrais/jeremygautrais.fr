@@ -11,7 +11,10 @@ image: '/static/images/from-static-site-to-static-site/banner.jpeg'
   width={1400 / 2}
   height={787 / 2}
   priority
+  className='rounded-lg'
 />
+
+## Why Should You Care?
 
 In the past few weeks, I have changed the generation of my website from plain HTML, CSS + JavaScript to using a static site generator, [Next.js](https://nextjs.org/). My main reasons for choosing a static site generator (SSG) were the following:
 
@@ -19,3 +22,36 @@ In the past few weeks, I have changed the generation of my website from plain HT
 - **Scalability and maintainability**: My portfolio was starting to become a HTML labyrinth with never-ending web pages, which were more and more difficult to browse through. Using a framework make it easier to organize code and store site content.
 - **Blogging**: I wanted to start a blog and have a more robust way of storing blog's data than putting it in HMTL raw content. With SSG, each blog post is stored in markup language, and pre-rendered into HTML at build time.
 - **Performance**: Since pages are pre-rendered at build time, when a server request a file, the file is immediately returned without any processing. This heavily improves page loading time.
+
+```css
+--geist-foreground: #000;
+--geist-background: #fff;
+--accents-1: #fafafa;
+--accents-2: #eaeaea;
+--accents-3: #999999;
+--accents-4: #888888;
+--accents-5: #666666;
+--accents-6: #444444;
+--accents-7: #333333;
+--accents-8: #111111;
+--geist-success: #0070f3;
+--geist-error: #ee0000;
+--geist-warning: #f5a623;
+--dropdown-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.02);
+--dropdown-triangle-stroke: #fff;
+--scroller-start: var(--geist-background);
+--scroller-end: rgba(255, 255, 255, 0);
+--shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
+--shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+--shadow-large: 0 30px 60px rgba(0, 0, 0, 0.12);
+--portal-opacity: 0.25;
+```
+
+```html
+<script src="/js/component-library.min.js"></script>
+```
+
+```jsx
+<PrimaryButton>Hello World!</PrimaryButton>
+<SecondaryButton>Hello World!</SecondaryButton>
+```

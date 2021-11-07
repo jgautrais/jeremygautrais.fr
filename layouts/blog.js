@@ -13,7 +13,7 @@ export default function BlogLayout({ children, frontMatter }) {
       type='article'
     >
       <article className='flex flex-col items-start justify-center w-full max-w-2xl mx-auto mb-16'>
-        <h1 className='mt-12 mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white'>
+        <h1 className='mt-20 mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white'>
           {frontMatter.title}
         </h1>
         <div className='flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center'>
@@ -23,9 +23,10 @@ export default function BlogLayout({ children, frontMatter }) {
               height={24}
               width={24}
               src='/static/images/profile_pic.jpg'
-              className='rounded-full'
+              className='rounded-full grayscale'
+              objectFit='cover'
             />
-            <p className='ml-2 text-sm text-gray-700 dark:text-gray-300'>
+            <p className='ml-2 text-sm text-gray-500 dark:text-gray-400'>
               {'Jérémy Gautrais / '}
               {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
             </p>
