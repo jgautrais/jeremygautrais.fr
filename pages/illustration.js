@@ -104,7 +104,7 @@ const illustrations = [
     title: 'Lyon, Colline de Fourvière',
     src: 'vector-005_lyon.jpg',
     format: '1x1',
-    style: 'voxel',
+    style: 'vector',
   },
   {
     title: 'Barbecue',
