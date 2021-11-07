@@ -55,9 +55,6 @@ const Nav = () => {
         <Link href='/' passHref>
           <MenuLink onClick={toggleMenu}>{t('navbar.home')}</MenuLink>
         </Link>
-        <Link href='/blog' passHref>
-          <MenuLink onClick={toggleMenu}>Blog</MenuLink>
-        </Link>
         <Link href='/illustration' passHref>
           <MenuLink onClick={toggleMenu}>Illustration</MenuLink>
         </Link>
