@@ -1,0 +1,12 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "about": "A propos",
+    "skills": "Compétences"
+  },
+  "hello": {
+    "title": "Bonjour",
+    "description": "lorem ipsum"
+  }
+}
