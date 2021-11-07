@@ -1,0 +1,21 @@
+---
+title: 'From static site to static site'
+publishedAt: '2017-07-15'
+summary: 'Learn about the tech stack I use for this blog: Next.js, Tailwind, i18n.'
+image: '/static/images/from-static-site-to-static-site/banner.jpeg'
+---
+
+<Image
+  alt={`Next.js + Tailwind`}
+  src={`/static/images/from-static-site-to-static-site/banner.jpeg`}
+  width={1400 / 2}
+  height={787 / 2}
+  priority
+/>
+
+In the past few weeks, I have changed the generation of my website from plain HTML, CSS + JavaScript to using a static site generator, [Next.js](https://nextjs.org/). My main reasons for choosing a static site generator (SSG) were the following:
+
+- **Learning**: I wanted to learn how SSG works and to keep practicing a JS framework (React).
+- **Scalability and maintainability**: My portfolio was starting to become a HTML labyrinth with never-ending web pages, which were more and more difficult to browse through. Using a framework make it easier to organize code and store site content.
+- **Blogging**: I wanted to start a blog and have a more robust way of storing blog's data than putting it in HMTL raw content. With SSG, each blog post is stored in markup language, and pre-rendered into HTML at build time.
+- **Performance**: Since pages are pre-rendered at build time, when a server request a file, the file is immediately returned without any processing. This heavily improves page loading time.

@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: optional;
-  src: url(/fonts/inter-var-latin.woff2) format("woff2");
+  src: url(/fonts/inter-var-latin.woff2) format('woff2');
 }
 
 @font-face {
@@ -14,7 +14,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: optional;
-  src: url(/fonts/oswald-v40-latin-regular.woff2) format("woff2");
+  src: url(/fonts/oswald-v40-latin-regular.woff2) format('woff2');
 }
 
 /* HAMBURGER MENU */
@@ -28,12 +28,12 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   min-height: 100vh;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 body.non-scrollable {
@@ -56,7 +56,7 @@ body.non-scrollable {
   height: 2px;
   background: #000;
   -webkit-transform: rotate(0);
-          transform: rotate(0);
+  transform: rotate(0);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
@@ -76,29 +76,29 @@ body.non-scrollable {
 
 .hamburger__top-bun {
   -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .hamburger__bottom-bun {
   -webkit-transform: translateY(3px);
-          transform: translateY(3px);
+  transform: translateY(3px);
 }
 
 .open {
   -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
   -webkit-transform: translateY(-1px);
-          transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 .open .hamburger__top-bun {
   -webkit-transform: rotate(45deg) translateY(0px);
-          transform: rotate(45deg) translateY(0px);
+  transform: rotate(45deg) translateY(0px);
 }
 
 .open .hamburger__bottom-bun {
   -webkit-transform: rotate(-45deg) translateY(0px);
-          transform: rotate(-45deg) translateY(0px);
+  transform: rotate(-45deg) translateY(0px);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -124,7 +124,7 @@ body.non-scrollable {
   border-radius: 0.5rem !important;
   overflow: hidden;
   -webkit-filter: grayscale(40%);
-          filter: grayscale(40%);
+  filter: grayscale(40%);
 }
 
 .project__img:after {
@@ -145,14 +145,14 @@ body.non-scrollable {
 
 .project__img:hover img {
   -webkit-filter: grayscale(40%);
-          filter: grayscale(40%);
+  filter: grayscale(40%);
 }
 
 .profile__img img {
   border-radius: 50% !important;
   overflow: hidden;
   -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .illustration__img {
@@ -186,7 +186,7 @@ body.non-scrollable {
   }
   .project__img img {
     -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
+    filter: grayscale(100%);
   }
 }
 
@@ -196,11 +196,11 @@ body.non-scrollable {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -220,7 +220,7 @@ body.non-scrollable {
 .basicLightbox__placeholder {
   max-width: 100%;
   -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  transform: scale(0.9);
   -webkit-transition: -webkit-transform 0.4s ease;
   transition: -webkit-transform 0.4s ease;
   transition: transform 0.4s ease;
@@ -269,7 +269,7 @@ body.non-scrollable {
 
 .basicLightbox--visible .basicLightbox__placeholder {
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .basicLightbox__placeholder .lightbox__img {
@@ -283,7 +283,7 @@ body.non-scrollable {
   max-width: 80vw;
   max-height: 80vh !important;
   -o-object-fit: scale-down;
-     object-fit: scale-down;
+  object-fit: scale-down;
 }
 
 .basicLightbox__placeholder .title {
@@ -300,5 +300,136 @@ body.non-scrollable {
   margin-top: 1rem;
   text-align: center;
   font-style: italic;
+}
+
+.prose .anchor {
+  @apply absolute invisible;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible no-underline;
+}
+
+.prose .anchor:after {
+  @apply text-gray-300 dark:text-gray-700;
+  content: '#';
+}
+
+.prose *:hover > .anchor {
+  @apply visible no-underline;
+}
+
+.prose pre {
+  @apply border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900;
+}
+
+.prose code {
+  @apply text-gray-800 dark:text-gray-200 px-1 py-0.5 border border-gray-100 dark:border-gray-800 rounded-md bg-gray-100 dark:bg-gray-900;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+.prose .token.comment,
+.prose .token.prolog,
+.prose ..token.doctype,
+.prose ..token.cdata {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.prose ..token.punctuation {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.prose ..token.property,
+.prose ..token.tag,
+.prose ..token.boolean,
+.prose ..token.number,
+.prose ..token.constant,
+.prose ..token.symbol,
+.prose .token.deleted {
+  @apply text-green-500;
+}
+
+.prose ..token.selector,
+.prose ..token.attr-name,
+.prose ..token.string,
+.prose ..token.char,
+.prose ..token.builtin,
+.prose ..token.inserted {
+  @apply text-purple-500;
+}
+
+.prose .token.operator,
+.prose .token.entity,
+.prose .token.url,
+.prose .language-css .token.string,
+.prose .style .token.string {
+  @apply text-yellow-500;
+}
+
+.prose .token.atrule,
+.prose .token.attr-value,
+.prose .token.keyword {
+  @apply text-blue-500;
+}
+
+.prose .token.function,
+.prose .token.class-name {
+  @apply text-pink-500;
+}
+
+.prose .token.regex,
+.prose .token.important,
+.prose .token.variable {
+  @apply text-yellow-500;
+}
+
+.prose code[class*='language-'],
+.prose pre[class*='language-'] {
+  @apply text-gray-800 dark:text-gray-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.rehype-code-title {
+  @apply px-5 py-3 font-mono text-sm font-bold text-gray-800 bg-gray-200 border border-b-0 border-gray-200 rounded-t dark:text-gray-200 dark:border-gray-700 dark:bg-gray-800;
+}
+
+.rehype-code-title + pre {
+  @apply mt-0 rounded-t-none;
+}
+
+.highlight-line {
+  @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
+}
+
+/* Remove Safari input shadow on mobile */
+input[type='text'],
+input[type='email'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 /*# sourceMappingURL=globals.css.map */

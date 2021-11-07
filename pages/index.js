@@ -7,34 +7,34 @@ import LanguageSwitcher from '../components/LanguageSwitcher';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 
+const H1 = (props) => (
+  <h1
+    className='text-4xl md:text-5xl tracking-tighter font-bold mb-8'
+    {...props}
+  />
+);
+
+const PHero = (props) => (
+  <p
+    className='pr-10 sm:pr-20 md:pr-44 lg:pr-64 font-medium text-gray-700 dark:text-gray-300'
+    {...props}
+  />
+);
+
+const Section = ({ children, hero = false }) => {
+  const classes = `${hero ? 'sm:pl-20 mt-20 mb-36' : 'my-36'}`;
+
+  return <section className={classes}>{children}</section>;
+};
+
+const H2 = ({ children }) => {
+  return <h2 className='text-3xl sm:text-4xl font-bold mb-6'>{children}</h2>;
+};
+
 export default function Home() {
   const router = useRouter();
   const { locale } = router;
   const { t } = useTranslation('home');
-
-  const H1 = (props) => (
-    <h1
-      className='text-4xl md:text-5xl tracking-tighter font-bold mb-8'
-      {...props}
-    />
-  );
-
-  const PHero = (props) => (
-    <p
-      className='pr-10 sm:pr-20 md:pr-44 lg:pr-64 font-medium text-gray-700 dark:text-gray-300'
-      {...props}
-    />
-  );
-
-  const Section = ({ children, hero = false }) => {
-    const classes = `${hero ? 'sm:pl-20 mt-20 mb-36' : 'my-36'}`;
-
-    return <section className={classes}>{children}</section>;
-  };
-
-  const H2 = ({ children }) => {
-    return <h2 className='text-3xl sm:text-4xl font-bold mb-6'>{children}</h2>;
-  };
 
   return (
     <Container
