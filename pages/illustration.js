@@ -373,8 +373,7 @@ export default function Illustration() {
   };
 
   const handleClick = (title) => (e) => {
-    const source = e.target.getElementsByTagName('img')[0].src;
-    const srcset = e.target.getElementsByTagName('img')[0].srcset;
+    const source = e.target.querySelector('img').src;
     const instance = basicLightbox.create(`
     <div class="modal">
     <div
@@ -383,7 +382,6 @@ export default function Illustration() {
                 <Image
                   alt='${title}'
                   src='${source}'
-                  srcset='${srcset}'
                   loading='lazy'
                 />
               </div>
