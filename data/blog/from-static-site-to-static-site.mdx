@@ -14,44 +14,35 @@ image: '/static/images/from-static-site-to-static-site/banner.jpeg'
   className='rounded-lg'
 />
 
-## Why Should You Care?
+In the past few weeks, I have updated my website from plain HTML, CSS + JavaScript to using a static site generator, [Next.js](https://nextjs.org/). On the outside, the result is pretty much the same, but a lot has changed under the hood. My main reasons for choosing a static site generator (SSG) were the following:
 
-In the past few weeks, I have changed the generation of my website from plain HTML, CSS + JavaScript to using a static site generator, [Next.js](https://nextjs.org/). My main reasons for choosing a static site generator (SSG) were the following:
+- **Learning**: I wanted to learn how SSG works and keep practicing with a JavaScript framework (React).
+- **Scalability and maintainability**: My portfolio was starting to become a HTML labyrinth with never-ending pages, in which retrieving information became more and more difficult. Using a framework make it easier to organize code and site content.
+- **Blogging**: I wanted to start a blog and have a more robust way of storing blog's data than putting it in HMTL raw content. With mu current setup, each blog post is stored in markup language, and pre-rendered into HTML at build time.
+- **Performance**: Since pages are pre-rendered at build time, when a server request a file, the file is immediately returned without any processing. I can enjoy all the benefits from using React and Next.js development tools and still generate blazing fast static pages.
 
-- **Learning**: I wanted to learn how SSG works and to keep practicing a JS framework (React).
-- **Scalability and maintainability**: My portfolio was starting to become a HTML labyrinth with never-ending web pages, which were more and more difficult to browse through. Using a framework make it easier to organize code and store site content.
-- **Blogging**: I wanted to start a blog and have a more robust way of storing blog's data than putting it in HMTL raw content. With SSG, each blog post is stored in markup language, and pre-rendered into HTML at build time.
-- **Performance**: Since pages are pre-rendered at build time, when a server request a file, the file is immediately returned without any processing. This heavily improves page loading time.
+## Why choosing Next.js ?
 
-```css
---geist-foreground: #000;
---geist-background: #fff;
---accents-1: #fafafa;
---accents-2: #eaeaea;
---accents-3: #999999;
---accents-4: #888888;
---accents-5: #666666;
---accents-6: #444444;
---accents-7: #333333;
---accents-8: #111111;
---geist-success: #0070f3;
---geist-error: #ee0000;
---geist-warning: #f5a623;
---dropdown-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.02);
---dropdown-triangle-stroke: #fff;
---scroller-start: var(--geist-background);
---scroller-end: rgba(255, 255, 255, 0);
---shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
---shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
---shadow-large: 0 30px 60px rgba(0, 0, 0, 0.12);
---portal-opacity: 0.25;
-```
+For such a small-scale project, all tech stacks could have been used. I have recently started a coding bootcamp at [Wild Code School](https://www.wildcodeschool.com/en-GB/courses/web-development-course-full-time/lyon) in Lyon and I am following there the PHP/Symfony track. Although I have learned React before, I wanted to keep practicing with this framework as it is the most popular on french market.
 
-```html
-<script src="/js/component-library.min.js"></script>
-```
+I also wanted to use specifically a static site generator, as all my content comes from static sources, all pages can be rendered at build time and served directly at each request, for improved performance.
 
-```jsx
-<PrimaryButton>Hello World!</PrimaryButton>
-<SecondaryButton>Hello World!</SecondaryButton>
+My project to setup a personal blog was the perfect use case for me to practice with React and a static site generator. I choosed Next.js specifically, [among others](https://jamstack.org/generators/), since I had already started to deploy my static portfolio with Vercel, the team behind Next.js.
+
+## Tailwind
+
+My website is an opportunity to try new tools and, while transitioning to Next.js, I decided to try a new CSS framework: [Tailwind CSS](https://tailwindcss.com/). There was a slight learning curve as I tried to translate my CSS ideas into Tailwind specific class naming. But, generally speaking, I really enjoyed working with Tailwind, the documentation is clear and easy to navigate.
+
+Dark mode is also easily set up, just enable the [darkMode option](https://tailwindcss.com/docs/dark-mode) in tailwind.config.js. I wanted to include a dark mode toggle so I used [next-themes](https://github.com/pacocoursey/next-themes) library for this. Tailwind is paired easily with next-themes although I had some difficulty to make next-themes use a `class` attribute on html element to store data about lighht/dark theme instead `data-theme` attribute until I come across the relevant [documentation](https://github.com/pacocoursey/next-themes#class-instead-of-data-attribute). In the end, the inclusion of pretty straightforward, just include the following in your `_app.js` file:
+
+```js
+import { ThemeProvider } from 'next-themes';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ThemeProvider attribute='class' defaultTheme='system'>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
 ```

@@ -39,7 +39,7 @@ module.exports = {
             'h2,h3,h4': {
               'scroll-margin-top': '2rem',
             },
-            code: { color: theme('colors.pink.500') },
+            code: { color: theme('colors.green.500') },
             'blockquote p:first-of-type::before': false,
             'blockquote p:last-of-type::after': false,
           },
@@ -52,7 +52,7 @@ module.exports = {
               '&:hover': {
                 color: theme('colors.blue.600'),
               },
-              code: { color: theme('colors.blue.400') },
+              code: { color: theme('colors.green.400') },
             },
             blockquote: {
               borderLeftColor: theme('colors.gray.700'),
