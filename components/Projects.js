@@ -21,7 +21,6 @@ const Projects = () => {
   const ProjectTech = ({ tech }) => {
     let name = null;
     let color = null;
-    let bgColor = tech;
 
     switch (tech) {
       case 'html':
