@@ -380,7 +380,7 @@ export default function Illustration() {
               >
                 <Image
                   alt='${title}'
-                  src='${src}'
+                  src='/static/images/illustration/${src}'
                   loading='lazy'
                 />
               </div>
