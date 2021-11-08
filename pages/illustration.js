@@ -336,29 +336,6 @@ const illustrations = [
   },
 ];
 
-const Section = ({ children }) => {
-  return <section className='mt-12 my-20'>{children}</section>;
-};
-const H2 = ({ children }) => {
-  return <h2 className='text-3xl sm:text-4xl font-bold mb-6'>{children}</h2>;
-};
-
-const Button = ({ children, onClick, name, filter, middle = false }) => {
-  return (
-    <button
-      type='button'
-      className={`${middle ? 'mx-4' : ''} px-4 py-1 rounded-lg ${
-        name === filter
-          ? 'bg-blue-600 text-white dark:bg-blue-600'
-          : 'bg-gray-200 dark:bg-gray-600'
-      } flex items-center justify-center flex-shrink-0 self-center hover:ring-2 ring-gray-300  transition-all m-w-max`}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-};
-
 export default function Illustration() {
   const [illu, setIllu] = useState(illustrations);
   const [filter, setFilter] = useState('all');
@@ -395,6 +372,29 @@ export default function Illustration() {
     instance.show();
   };
 
+  const Section = ({ children }) => {
+    return <section className='mt-12 my-20'>{children}</section>;
+  };
+  const H2 = ({ children }) => {
+    return <h2 className='text-3xl sm:text-4xl font-bold mb-6'>{children}</h2>;
+  };
+
+  const Button = ({ children, onClick, name, filter, middle = false }) => {
+    return (
+      <button
+        type='button'
+        className={`${middle ? 'mx-4' : ''} px-4 py-1 rounded-lg ${
+          name === filter
+            ? 'bg-blue-600 text-white dark:bg-blue-600'
+            : 'bg-gray-200 dark:bg-gray-600'
+        } flex items-center justify-center flex-shrink-0 self-center hover:ring-2 ring-gray-300  transition-all m-w-max`}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  };
+
   return (
     <Container
       title='Jérémy Gautrais - Illustration'
@@ -428,6 +428,7 @@ export default function Illustration() {
             return (
               <div
                 className='illustration__img relative mx-auto mb-16 md:mb-8 px-4 w-80 md:w-64 h-auto'
+                style={{ cursor: 'pointer' }}
                 onClick={handleClick(x.title)}
                 key={i}
               >
