@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import Container from '../components/Container';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
+import PostCard from '../components/PostCard';
+import { getAllFilesFrontMatter } from '../utils/mdx';
 
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import Skills from '../components/Skills';
@@ -22,7 +24,9 @@ const PHero = (props) => (
 );
 
 const Section = ({ children, hero = false }) => {
-  const classes = `${hero ? 'sm:pl-20 mt-20 mb-36' : 'my-36'}`;
+  const classes = `${
+    hero ? 'sm:pl-20 mt-20 mb-28 md:mb-36' : 'my-28 md:my-36'
+  }`;
 
   return <section className={classes}>{children}</section>;
 };
@@ -31,10 +35,17 @@ const H2 = ({ children }) => {
   return <h2 className='text-3xl sm:text-4xl font-bold mb-6'>{children}</h2>;
 };
 
-export default function Home() {
+export default function Home({ posts }) {
   const router = useRouter();
   const { locale } = router;
   const { t } = useTranslation('home');
+
+  const lastPosts = posts
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    )
+    .slice(0, 3);
 
   return (
     <Container
@@ -69,6 +80,15 @@ export default function Home() {
         />
       </Section>
 
+      <section>
+        <H2>{t('posts')}</H2>
+        <div className='flex flex-col md:flex-row md:justify-between'>
+          {lastPosts.map((frontMatter) => (
+            <PostCard key={frontMatter.title} {...frontMatter} />
+          ))}
+        </div>
+      </section>
+
       <Section>
         <H2>{t('skills.title')}</H2>
         <Skills />
@@ -80,4 +100,10 @@ export default function Home() {
       </Section>
     </Container>
   );
+}
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter('blog');
+
+  return { props: { posts } };
 }

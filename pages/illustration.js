@@ -372,7 +372,9 @@ export default function Illustration() {
     setFilter('all');
   };
 
-  const handleClick = (title, src, format) => (e) => {
+  const handleClick = (title) => (e) => {
+    const src = e.target.getElementsByTagName('img')[0].src;
+    const srcset = e.target.getElementsByTagName('img')[0].srcset;
     const instance = basicLightbox.create(`
     <div class="modal">
     <div
@@ -380,7 +382,8 @@ export default function Illustration() {
               >
                 <Image
                   alt='${title}'
-                  src='/static/images/illustration/${src}'
+                  src='${src}'
+                  srcset='${srcset}'
                   loading='lazy'
                 />
               </div>
@@ -425,7 +428,7 @@ export default function Illustration() {
             return (
               <div
                 className='illustration__img relative mx-auto mb-16 md:mb-8 px-4 w-80 md:w-64 h-auto'
-                onClick={handleClick(x.title, x.src, x.format)}
+                onClick={handleClick(x.title)}
                 key={i}
               >
                 <Image
@@ -433,6 +436,7 @@ export default function Illustration() {
                   src={`/static/images/illustration/${x.src}`}
                   layout='responsive'
                   objectFit='cover'
+                  sizes='50vw'
                   width={x.format === '1x1' ? 100 : 300}
                   height={x.format === '1x1' ? 100 : 400}
                 />
