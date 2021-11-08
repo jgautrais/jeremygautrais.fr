@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const PostCard = ({ title, summary, slug }) => {
+const PostCard = ({ title, slug }) => {
   return (
     <Link href={`/blog/${slug}`} locale='en'>
       <a className='w-full md:w-5/12 lg:w-4/12 md:mx-2 lg:mx-4'>
