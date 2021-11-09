@@ -18,7 +18,7 @@ In the past few weeks, I have updated my website from plain HTML, CSS + JavaScri
 
 - **Learning**: I wanted to learn how SSG works and keep practicing with a JavaScript framework (React).
 - **Scalability and maintainability**: My portfolio was starting to become a HTML labyrinth with never-ending pages, in which retrieving information became more and more difficult. Using a framework make it easier to organize code and site content.
-- **Blogging**: I wanted to start a blog and have a more robust way of storing blog's data than putting it in HMTL raw content. With mu current setup, each blog post is stored in markup language, and pre-rendered into HTML at build time.
+- **Blogging**: I wanted to start a blog and have a more robust way of storing blog's data than putting it in HMTL raw content. With my current setup, each blog post is stored in markup language, and pre-rendered into HTML at build time.
 - **Performance**: Since pages are pre-rendered at build time, when a server request a file, the file is immediately returned without any processing. I can enjoy all the benefits from using React and Next.js development tools and still generate blazing fast static pages.
 
 ## Why choosing Next.js ?
@@ -33,7 +33,7 @@ My project to setup a personal blog was the perfect use case for me to practice 
 
 My website is an opportunity to try new tools and, while transitioning to Next.js, I decided to try a new CSS framework: [Tailwind CSS](https://tailwindcss.com/). There was a slight learning curve as I tried to translate my CSS ideas into Tailwind specific class naming. But, generally speaking, I really enjoyed working with Tailwind, the documentation is clear and easy to navigate.
 
-Dark mode is also easily set up, just enable the [darkMode option](https://tailwindcss.com/docs/dark-mode) in tailwind.config.js. I wanted to include a dark mode toggle so I used [next-themes](https://github.com/pacocoursey/next-themes) library for this. Tailwind is paired easily with next-themes although I had some difficulty to make next-themes use a `class` attribute on html element to store data about light/dark theme instead `data-theme` attribute until I come across the relevant [documentation](https://github.com/pacocoursey/next-themes#class-instead-of-data-attribute). In the end, the inclusion of Tailwind is pretty straightforward, just include the following in your `_app.js` file:
+Dark mode is also easily set up, just enable the [darkMode option](https://tailwindcss.com/docs/dark-mode) in tailwind.config.js. I wanted to include a dark mode toggle so I used [next-themes](https://github.com/pacocoursey/next-themes) library for this. Tailwind is paired easily with next-themes although I had some difficulty to make next-themes use a `class` attribute on html element to store data about light/dark theme instead `data-theme` attribute until I come across the relevant [documentation](https://github.com/pacocoursey/next-themes#class-instead-of-data-attribute). In the end, the setup of next-themes is pretty straightforward, just include the following in your `_app.js` file:
 
 ```js
 import { ThemeProvider } from 'next-themes';
@@ -47,9 +47,26 @@ function MyApp({ Component, pageProps }) {
 }
 ```
 
+Finally, in your toggle component, you have to call the `useTheme()` method from next-themes (`resolvedTheme` variable is used throughout the whole app to store and retrieve info about current theme):
+
+```js
+import { useTheme } from 'next-themes';
+
+export default function Toggle() {
+  const handleThemeChange = () =>
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+
+  return (
+    <button onClick={handleThemeChange} aria='Toggle Dark Mode'>
+      Toggle
+    </button>
+  );
+}
+```
+
 ## Translations
 
-Most of the content of my website is written in English, also, being born in France, I decide to provide translation for my homepage only. For this I am using i18n module, and more specifically [next-translate](https://github.com/vinissimus/next-translate) library. The translations are easily set up following documentation. I also use the json translation files to store text content, in French and English, about my projects. With i18n, one can retrieve an [array of translation](https://github.com/vinissimus/next-translate#7-nested-translations) with the option `returnObjects`. I can then generate components for each project by iterating over the translations' array:
+Most of the content of my website is written in English, although, being born in France, I decided to provide translations for my home and about pages. For this I am using i18n module, and more specifically [next-translate](https://github.com/vinissimus/next-translate) library. The translations are easily set up following documentation. I also use the json translation files to store text content, in French and English, about my projects. With i18n, I can retrieve an [array of translation](https://github.com/vinissimus/next-translate#7-nested-translations) with the option `returnObjects`:
 
 ```js
 import useTranslation from 'next-translate/useTranslation';
@@ -58,7 +75,7 @@ const { t } = useTranslation('namespace');
 const array = t('key', {}, { returnObjects: true });
 ```
 
-Don't forget the empty brackets in the middle! They take optional query parameters but should still be present within the input parameters even if empty. It took me hours to figure out that the `t` function was not returning an array of translations for omitting to provide these empty brackets 🤯
+I can then generate components for each project by iterating over the translations' array. Don't forget the empty brackets in the middle! They take optional query parameters but should still be present within the input parameters even if empty. It took me hours to figure out that the `t` function was not returning an array of translations for omitting to provide these empty brackets 🤯
 
 ---
 

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
@@ -14,9 +13,6 @@ const H2 = ({ children }) => {
 };
 
 export default function Blog({ posts }) {
-  const router = useRouter();
-  const { locale } = router;
-
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts
     .sort(
@@ -26,14 +22,6 @@ export default function Blog({ posts }) {
     .filter((frontMatter) =>
       frontMatter.title.toLowerCase().includes(searchValue.toLowerCase())
     );
-
-  useEffect(() => {
-    console.log(locale);
-    if (locale === 'fr') {
-      const locale = 'en';
-      router.push(`${router.pathname}`, `${router.pathname}`, { locale });
-    }
-  }, [router, locale]);
 
   return (
     <Container
