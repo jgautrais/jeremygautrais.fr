@@ -1,12 +1,8 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 const BlogPost = ({ title, summary, slug }) => {
-  const router = useRouter();
-  const { defaultLocale } = router;
-
   return (
-    <Link href={`/${defaultLocale}/blog/${slug}`} locale={false}>
+    <Link href={`/blog/${slug}`} locale={false}>
       <a className='w-full'>
         <div className='mb-8 w-full'>
           <div className='flex flex-col md:flex-row justify-between'>
